@@ -2,6 +2,7 @@ import json
 import spacy
 import tensorflow as tf
 from tensorflow.keras import layers
+from config import model_path,config_path,vocab_path
 from sklearn.preprocessing import LabelEncoder
 from tensorflow.keras.models import load_model
 
@@ -23,16 +24,16 @@ class Attention(layers.Layer):
         context = tf.reduce_sum(x * weights, axis=1)
         return context
     
-model = load_model('FinBiLSTM.h5', custom_objects={'Attention': Attention})
+model = load_model(model_path, custom_objects={'Attention': Attention})
 
 def lemmatize(text):
     return " ".join([t.lemma_ for t in nlp(text.lower()) if not t.is_punct and not t.is_space])
 
-with open("config.json", "r") as file:
+with open(config_path, "r") as file:
     config = json.load(file)
 
 import numpy as np
-vocab = np.load("vocab.npy", allow_pickle=True)
+vocab = np.load(vocab_path, allow_pickle=True)
 
 vectorizer = layers.TextVectorization(
     max_tokens=config["max_vocab"],
