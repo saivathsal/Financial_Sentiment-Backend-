@@ -1,5 +1,8 @@
 import os
+import subprocess
 from huggingface_hub import hf_hub_download
+
+subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
 
 token = os.getenv("HF_TOKEN")
 model_repo = os.getenv("MODEL_REPO")
