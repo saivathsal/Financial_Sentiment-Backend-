@@ -15,13 +15,13 @@ A backend service for financial sentiment analysis, providing APIs and processin
 - Custom sentiment analysis models
 
 ## Repository Structure
-
+```
 ├── app.py # Main application entry point
 ├── analyze.py # Sentiment analysis logic
 ├── model.py # Machine learning model handling
 ├── config.py # Configuration settings
 ├── requirements.txt # Python dependencies
-
+```
 
 ## Installation
 
